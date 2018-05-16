@@ -1,0 +1,19 @@
+{
+  "name": "small-web",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "no"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Youzi-wr/small-web.git"
+  },
+  "author": "wangru",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Youzi-wr/small-web/issues"
+  },
+  "homepage": "https://github.com/Youzi-wr/small-web#readme"
+}
