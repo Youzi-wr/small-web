@@ -3,6 +3,7 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
+var STYLE_PATH = path.resolve(ROOT_PATH, 'style');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
@@ -18,6 +19,26 @@ module.exports = {
         hot: true,
         inline: true,
         progress: true,
+    },
+    module: {
+        rules: [{
+                test: /\.jsx?$/,
+                loader: 'babel-loader',
+                include: APP_PATH,
+                query: {
+                    presets: ['es2015']
+                }
+            },
+            {
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader'],
+                include: STYLE_PATH
+            },
+            {
+                test: /\.(png|jpg|jpeg)$/,
+                loader: 'url-loader?limit=40000'
+            }
+        ]
     },
     //添加我们的插件 会自动生成一个html文件
     plugins: [

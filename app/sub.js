@@ -4,4 +4,4 @@ function generateText() {
     return element;
 }
 
-module.exports = generateText;
+export default generateText;
