@@ -4,6 +4,7 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
 var STYLE_PATH = path.resolve(ROOT_PATH, 'style');
+var IMAGE_PATH = path.resolve(ROOT_PATH, 'images');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
 module.exports = {
@@ -36,7 +37,8 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|jpeg)$/,
-                loader: 'url-loader?limit=40000'
+                loader: 'url-loader?limit=8192&name=images/[name].[ext]',
+                include: IMAGE_PATH
             }
         ]
     },
