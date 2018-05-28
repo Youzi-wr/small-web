@@ -1,5 +1,4 @@
 var path = require('path');
-var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
@@ -14,7 +13,7 @@ module.exports = {
     entry: {
         app: path.resolve(APP_PATH, 'index.js'),
         //添加要打包在vendors里面的库
-        vendors: []
+        vendors: ['jquery', 'moment']
     },
     //输出的文件名 合并以后的js会命名为bundle.js
     output: {
@@ -22,15 +21,12 @@ module.exports = {
         filename: '[name].[hash].js'
     },
     devtool: 'source-map',
-    devServer: {
-        historyApiFallback: true,
-        hot: true,
-        inline: true,
-        progress: true,
-    },
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
+    // devServer: {
+    //     historyApiFallback: true,
+    //     hot: true,
+    //     inline: true,
+    //     progress: true,
+    // },
     module: {
         rules: [{
                 test: /\.jsx?$/,

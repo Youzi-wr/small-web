@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack --progress --profile --colors --config webpack.production.config.js",
     "dev": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server --hot --inline"
+    "starts": "webpack-dev-server --hot --inline"
   },
   "repository": {
     "type": "git",
@@ -16,18 +17,24 @@
   "bugs": {
     "url": "https://github.com/Youzi-wr/small-web/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
   "devDependencies": {
     "babel-loader": "^7.1.4",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-react-hmre": "^1.1.1",
     "css-loader": "^0.28.11",
     "html-webpack-plugin": "^3.2.0",
+    "jshint-loader": "^0.8.4",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
     "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.3",
+    "webpack-cli": "^2.1.4",
     "webpack-dev-server": "^3.1.4"
   }
 }
