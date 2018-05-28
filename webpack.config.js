@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlwebpackPlugin = require('html-webpack-plugin');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
 var APP_PATH = path.resolve(ROOT_PATH, 'app');
@@ -57,10 +58,24 @@ module.exports = {
             loader: 'jshint-loader'
         }]
     },
+    optimization: {
+        minimizer: [
+            // we specify a custom UglifyJsPlugin here to get source maps in production
+            // 这个使用uglifyJs压缩你的js代码            
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                uglifyOptions: {
+                    compress: false,
+                    ecma: 6,
+                    mangle: true
+                },
+                sourceMap: true
+            })
+        ]
+    },
     //添加我们的插件 会自动生成一个html文件
     plugins: [
-        //这个使用uglifyJs压缩你的js代码
-        new webpack.optimize.UglifyJsPlugin({ minimize: true }),
         //把入口文件里面的数组打包成verdors.js
         new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
         new HtmlwebpackPlugin({
