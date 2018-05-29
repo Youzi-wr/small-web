@@ -1,41 +1,49 @@
 {
-  "name": "small-web",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "webpack --progress --profile --colors --config webpack.production.config.js",
-    "dev": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server --hot --inline"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Youzi-wr/small-web.git"
-  },
-  "author": "wangru",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Youzi-wr/small-web/issues"
-  },
-  "dependencies": {
-    "react": "^16.4.0",
-    "react-dom": "^16.4.0"
-  },
-  "devDependencies": {
-    "babel-loader": "^7.1.4",
-    "babel-preset-es2015": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-react-hmre": "^1.1.1",
-    "css-loader": "^0.28.11",
-    "html-webpack-plugin": "^3.2.0",
-    "jshint-loader": "^0.8.4",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
-    "style-loader": "^0.21.0",
-    "uglifyjs-webpack-plugin": "^1.2.5",
-    "url-loader": "^1.0.1",
-    "webpack": "^4.8.3",
-    "webpack-cli": "^2.1.4",
-    "webpack-dev-server": "^3.1.4"
-  }
+    "name": "small-web",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "webpack --progress --profile --colors --config webpack.production.config.js",
+        "dev": "webpack --config webpack.config.js",
+        "start": "webpack-dev-server --hot --inline"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Youzi-wr/small-web.git"
+    },
+    "author": "wangru",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Youzi-wr/small-web/issues"
+    },
+    "dependencies": {
+        "antd": "^3.3.3",
+        "axios": "^0.15.3",
+        "react": "^16.4.0",
+        "react-dom": "^16.4.0",
+        "react-redux": "^5.0.2",
+        "react-router-dom": "^4.2.2",
+        "redux": "^3.7.2",
+        "redux-logger": "^3.0.6",
+        "redux-thunk": "^2.2.0",
+        "request": "^2.72.0"
+    },
+    "devDependencies": {
+        "babel-loader": "^7.1.4",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-react": "^6.24.1",
+        "babel-preset-react-hmre": "^1.1.1",
+        "css-loader": "^0.28.11",
+        "html-webpack-plugin": "^3.2.0",
+        "jshint-loader": "^0.8.4",
+        "node-sass": "^4.9.0",
+        "sass-loader": "^7.0.1",
+        "style-loader": "^0.21.0",
+        "uglifyjs-webpack-plugin": "^1.2.5",
+        "url-loader": "^1.0.1",
+        "webpack": "^4.8.3",
+        "webpack-cli": "^2.1.4",
+        "webpack-dev-server": "^3.1.4"
+    }
 }
