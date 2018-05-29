@@ -14,13 +14,13 @@ module.exports = {
     //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
     entry: {
         app: path.resolve(APP_PATH, 'index.js'),
-        //添加要打包在vendors里面的库
-        vendors: []
+        //添加要打包在vendor里面的库
+        vendor: ['lodash']
     },
     //输出的文件名 合并以后的js会命名为bundle.js
     output: {
         path: BUILD_PATH,
-        filename: '[name].[hash].js'
+        filename: '[name].js'
     },
     devtool: 'source-map',
     devServer: {
@@ -30,33 +30,33 @@ module.exports = {
         progress: true,
     },
     resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: ['*', '.js', '.jsx']
     },
     module: {
         rules: [{
                 test: /\.jsx?$/,
-                loader: 'babel-loader',
-                include: APP_PATH,
-                query: {
-                    presets: ['es2015']
-                }
+                use: [{
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['es2015']
+                        }
+                    }
+                    // 'jshint-loader'
+                ],
+                exclude: /node_modules/,
+                include: APP_PATH
             },
             {
                 test: /\.scss$/,
-                loaders: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
+                use: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
                 include: STYLE_PATH
             },
             {
                 test: /\.(png|jpg|jpeg)$/,
-                loader: 'url-loader?limit=8192&name=images/[name].[ext]',
+                use: 'url-loader?limit=8192&name=images/[name].[ext]',
                 include: IMAGE_PATH
             }
-        ],
-        preLoaders: [{
-            test: /\.jsx?$/,
-            include: APP_PATH,
-            loader: 'jshint-loader'
-        }]
+        ]
     },
     optimization: {
         minimizer: [
@@ -72,31 +72,38 @@ module.exports = {
                 },
                 sourceMap: true
             })
-        ]
+        ],
+        // runtimeChunk: {
+        //     name: "bundle" //指定公共 bundle 的名称
+        // }
+        // splitChunks: {
+        //     cacheGroups: { // 这里开始设置缓存的 chunks
+        //         priority: "0", // 缓存组优先级 false | object |
+        //         vendor: { // key 为entry中定义的 入口名称
+        //             chunks: "initial", // 必须三选一： "initial" | "all" | "async"(默认就是异步)
+        //             test: /react|lodash/, // 正则规则验证，如果符合就提取 chunk
+        //             name: "vendor" // 要缓存的 分隔出来的 chunk 名称
+        //         }
+        //     }
+        // }
     },
     //添加我们的插件 会自动生成一个html文件
     plugins: [
-        //把入口文件里面的数组打包成verdors.js
-        new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.js'),
         new HtmlwebpackPlugin({
             title: 'Hello World app',
-            template: path.resolve(TEM_PATH, 'index.html'),
+            // template: path.resolve(TEM_PATH, 'index.html'),
             filename: 'index.html',
             //chunks这个参数告诉插件要引用entry里面的哪几个入口
-            chunks: ['app', 'vendors'],
+            chunks: ['app', 'vendor'],
             //要把script插入到标签里
             inject: 'body'
-        }),
-        new HtmlwebpackPlugin({
-            title: 'Hello Mobile app',
-            template: path.resolve(TEM_PATH, 'mobile.html'),
-            filename: 'mobile.html',
-            chunks: ['mobile', 'vendors'],
-            inject: 'body'
         })
-    ],
-    //配置jshint的选项，支持es6的校验
-    jshint: {
-        "esnext": true
-    }
+        // new HtmlwebpackPlugin({
+        //     title: 'Hello Mobile app',
+        //     template: path.resolve(TEM_PATH, 'mobile.html'),
+        //     filename: 'mobile.html',
+        //     chunks: ['mobile', 'vendor'],
+        //     inject: 'body'
+        // })
+    ]
 };

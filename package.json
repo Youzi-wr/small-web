@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --progress --profile --colors --config webpack.production.config.js",
     "dev": "webpack --config webpack.config.js",
-    "starts": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server --hot --inline"
   },
   "repository": {
     "type": "git",
