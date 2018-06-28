@@ -4,28 +4,31 @@ var HtmlwebpackPlugin = require('html-webpack-plugin');
 var UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 //定义了一些文件夹的路径
 var ROOT_PATH = path.resolve(__dirname);
-var APP_PATH = path.resolve(ROOT_PATH, 'app');
-var STYLE_PATH = path.resolve(ROOT_PATH, 'style');
-var IMAGE_PATH = path.resolve(ROOT_PATH, 'images');
+var SRC_PATH = path.resolve(ROOT_PATH, 'src');
+var APP_PATH = path.resolve(SRC_PATH, 'app');
+var STYLE_PATH = path.resolve(SRC_PATH, 'style');
+var IMAGE_PATH = path.resolve(SRC_PATH, 'images');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
-var TEM_PATH = path.resolve(ROOT_PATH, 'templates');
 
-module.exports = {
+module.exports = {  
     //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
     entry: {
-        app: path.resolve(APP_PATH, 'index.js'),
+        app: path.resolve(SRC_PATH, 'index.js'),
         //添加要打包在vendor里面的库
         vendor: ['lodash']
     },
     //输出的文件名 合并以后的js会命名为bundle.js
     output: {
         path: BUILD_PATH,
-        filename: '[name].js'
+        filename: '[name].js',
+        sourceMapFilename: "sourcemaps/[file].map"
+        // publicPath: 'https://localhost:9800'
     },
+    mode: 'development',
     devtool: 'source-map',
     devServer: {
         historyApiFallback: true,
-        hot: true,
+        hot: false,
         inline: true,
         progress: true,
     },
@@ -44,12 +47,12 @@ module.exports = {
                     // 'jshint-loader'
                 ],
                 exclude: /node_modules/,
-                include: APP_PATH
+                include: SRC_PATH
             },
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
-                include: STYLE_PATH
+                include: SRC_PATH
             },
             {
                 test: /\.(png|jpg|jpeg)$/,
@@ -90,8 +93,8 @@ module.exports = {
     //添加我们的插件 会自动生成一个html文件
     plugins: [
         new HtmlwebpackPlugin({
-            title: 'Hello World app',
-            // template: path.resolve(TEM_PATH, 'index.html'),
+            title: 'kangyuan',
+            template: path.resolve(SRC_PATH, 'index.html'),
             filename: 'index.html',
             //chunks这个参数告诉插件要引用entry里面的哪几个入口
             chunks: ['app', 'vendor'],
