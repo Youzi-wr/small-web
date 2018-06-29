@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import style from './home.scss';
 
 const sty = style;
-console.log(sty);
+console.log(style);
 
 class Home extends React.Component {
     render() {
         return (
             <div className={sty.home}>
                 <div className={sty.head}>
+                    this is headthis is headthis is head <br/>
                     this is headthis is headthis is head
                 </div>
             </div>
@@ -18,4 +19,3 @@ class Home extends React.Component {
 }
 
 export default Home;
-

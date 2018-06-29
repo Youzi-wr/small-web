@@ -10,7 +10,10 @@ var STYLE_PATH = path.resolve(SRC_PATH, 'style');
 var IMAGE_PATH = path.resolve(SRC_PATH, 'images');
 var BUILD_PATH = path.resolve(ROOT_PATH, 'build');
 
-module.exports = {  
+const env = process.env.NODE_ENV;
+const isDevMode = env == 'development';
+
+module.exports = {
     //项目的文件夹 可以直接用文件夹名称 默认会找index.js 也可以确定是哪个文件名字
     entry: {
         app: path.resolve(SRC_PATH, 'index.js'),
@@ -39,19 +42,34 @@ module.exports = {
         rules: [{
                 test: /\.jsx?$/,
                 use: [{
-                        loader: 'babel-loader',
-                        options: {
-                            presets: ['es2015']
-                        }
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015']
                     }
-                    // 'jshint-loader'
-                ],
+                }],
                 exclude: /node_modules/,
                 include: SRC_PATH
             },
+            // {
+            //     test: /\.scss$/,
+            //     use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'],
+            //     include: SRC_PATH
+            // },
             {
-                test: /\.scss$/,
-                use: ['style-loader', 'css-loader?sourceMap', 'sass-loader?sourceMap'],
+                test: /\.(scss|sass)$/,
+                use: ['style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true,
+                            localIdentName: '[local]--[hash:base64:5]',
+                            camelCase: 'dashesOnly',
+                            importLoaders: 2,
+                            sourceMap: isDevMode
+                        }
+                    },
+                    'postcss-loader', 'sass-loader'
+                ],
                 include: SRC_PATH
             },
             {
