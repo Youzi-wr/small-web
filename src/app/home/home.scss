@@ -1,7 +1,32 @@
+.autoWidth {
+    margin: auto;
+    width: 1120px;
+}
+
 .home {
-    .head {
+    .head-wrap {
         width: 100%;
-        height: 60px;
-        background-color: #e4e4e4;
+        .head-top {
+            @extend .autoWidth;
+            height: 35px;
+            line-height: 2em;
+        }
+        .head {
+            height: 80px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 3.5em;
+        }
+        .nav-wrap {
+            @extend .autoWidth;
+            text-align: center;
+            .nav {
+                li {
+                    padding: 5px 10px;
+                    display: inline-block;
+                }
+            }
+        }
     }
 }

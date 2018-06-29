@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './app/home/Home.js';
-import './style/main.scss';
+import './style/reset.scss';
 
 
 class Index extends React.Component {
