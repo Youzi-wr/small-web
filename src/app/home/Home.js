@@ -10,8 +10,13 @@ class Home extends React.Component {
         return (
             <div className={sty.home}>
                 <div className={sty.headWrap}>
-                    <div className={sty.headTop}>
-                        Welcome to Kangyuan
+                    <div className={sty.headTopWrap}>
+                        <div className={sty.headTop}>
+                            <span className={sty.left}>Welcome to Kangyuan</span>
+                            <span className={sty.right}>
+                                <a href="javascript:;">换肤</a>
+                            </span>
+                        </div>
                     </div>
                     <div className={sty.head}>
                         KangYuan
@@ -26,6 +31,11 @@ class Home extends React.Component {
                             <li>Common Questions</li>
                             <li>Contact US</li>
                         </ul>
+                    </div>
+                </div>
+                <div className={sty.bannerWrap}>
+                    <div className={sty.banner}>
+
                     </div>
                 </div>
             </div>

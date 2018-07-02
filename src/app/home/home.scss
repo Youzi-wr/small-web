@@ -6,10 +6,16 @@
 .home {
     .head-wrap {
         width: 100%;
-        .head-top {
-            @extend .autoWidth;
-            height: 35px;
-            line-height: 2em;
+        .head-top-wrap {
+            background-color: #f1f1f1;
+            .head-top {
+                @extend .autoWidth;
+                height: 35px;
+                line-height: 2em;
+            }
+            .right {
+                text-align: right;
+            }
         }
         .head {
             height: 80px;
@@ -23,10 +29,17 @@
             text-align: center;
             .nav {
                 li {
-                    padding: 5px 10px;
                     display: inline-block;
+                    padding: 5px 15px;
+                    cursor: pointer;
                 }
             }
         }
+    }
+    .banner-wrap {
+        width: 100%;
+        height: 320px;
+        background: url(/src/images/home/Blu.jpg) no-repeat;
+        background-size: 100% 100%;
     }
 }
