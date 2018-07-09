@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Card } from 'antd';
+import service from '../service/axiosHttp';
 import style from './home.scss';
 
 const sty = style;
@@ -10,32 +11,15 @@ class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cardData: [{
-                url: 'src/images/home/blu.jpg',
-                title: 'wujin1',
-                description: 'http://localhost:8081/'
-            }, {
-                url: 'src/images/home/moon.jpg',
-                title: 'wujin2',
-                description: 'http://localhost:8081/'
-            }, {
-                url: 'src/images/home/dull.jpg',
-                title: 'wujin3',
-                description: 'http://localhost:8081/'
-            }, {
-                url: 'src/images/home/digita.jpg',
-                title: 'wujin4',
-                description: 'http://localhost:8081/'
-            }, {
-                url: 'src/images/home/hydrogen.jpg',
-                title: 'wujin5',
-                description: 'http://localhost:8081/'
-            }, {
-                url: 'src/images/home/zinc.jpg',
-                title: 'wujin6',
-                description: 'http://localhost:8081/'
-            }] 
+            cardData: ''
         }
+    }
+    componentDidMount() {
+        service.getCardData().then((res) => {
+            if (res.success) {
+                this.setState({ cardData: res.data })
+            }
+        });
     }
     render() {
         const { cardData } = this.state;
