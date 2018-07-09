@@ -39,7 +39,11 @@
     .banner-wrap {
         width: 100%;
         height: 320px;
-        background: url(/src/images/home/Blu.jpg) no-repeat;
+        background: url(/src/images/home/zinc.jpg) no-repeat;
         background-size: 100% 100%;
+    }
+    .card-wrap {
+        @extend .autoWidth;
+
     }
 }

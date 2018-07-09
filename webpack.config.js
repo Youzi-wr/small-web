@@ -40,21 +40,24 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.jsx?$/,
+                test: /\.(js|jsx)?$/,
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: ['es2015']
+                        babelrc: true,
+                        // presets: ['react', 'env'],
+                        plugins: [
+                            ['import', [{ libraryName: "antd", style: 'css' }]]
+                        ]
                     }
                 }],
                 exclude: /node_modules/,
                 include: SRC_PATH
             },
-            // {
-            //     test: /\.scss$/,
-            //     use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader', 'sass-loader?sourceMap'],
-            //     include: SRC_PATH
-            // },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader?sourceMap', 'postcss-loader']
+            },
             {
                 test: /\.(scss|sass)$/,
                 use: ['style-loader',

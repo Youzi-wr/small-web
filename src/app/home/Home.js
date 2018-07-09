@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Card } from 'antd';
 import style from './home.scss';
 
 const sty = style;
-console.log(style);
+const { Meta } = Card;
 
 class Home extends React.Component {
     render() {
@@ -37,6 +38,18 @@ class Home extends React.Component {
                     <div className={sty.banner}>
 
                     </div>
+                </div>
+                <div className={sty.cardWrap}>
+                    <Card
+                        hoverable
+                        style={{ width: 240 }}
+                        // cover={<img alt="example" src="src/images/home/moon.jpg" />}
+                    >
+                        <Meta
+                        title="Europe Street beat"
+                        description="www.instagram.com"
+                        />
+                    </Card>
                 </div>
             </div>
         );

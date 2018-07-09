@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import Home from './app/home/Home.js';
 import './style/reset.scss';
 
-
 class Index extends React.Component {
     render() {
         return <Home />;

@@ -1,0 +1,25 @@
+step1: 安装babel-plugin-import
+step2: 配置（style不能为true）
+        plugins: [
+            ['import', [{ libraryName: "antd", style: 'css' }]]
+        ]
+step3: 安装less及less-loader，配置：
+        {
+            test: /antd.*\.less$/,
+            use: ["style-loader",
+                {
+                    loader: 'css-loader',
+                    options: { sourceMap: isDevMode }
+                },
+                "postcss-loader", "less-loader"
+            ],
+            include: /node_modules/
+        }
+        发现样式仍未生效，并且编译报错
+        考虑到是antd module中文件不能正确编译问题
+step4: 安装babel-preset-env，网上解释：
+        “在没有配置项的情况下，babel-preset-env表现的同babel-preset-latest一样(或者可以说同babel-preset-es2015, 
+        babel-preset-es2016, and babel-preset-es2017结合到一起，表现的一致)”
+step4：注释掉webpack.config.js中的 presets: ['react', 'env']，添加 babelrc: true
+
+    编辑成功，样式引入成功！!
