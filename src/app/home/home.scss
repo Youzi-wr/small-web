@@ -30,7 +30,7 @@
             .nav {
                 li {
                     display: inline-block;
-                    padding: 5px 15px;
+                    padding: 5px 20px;
                     cursor: pointer;
                 }
             }
@@ -44,6 +44,10 @@
     }
     .card-wrap {
         @extend .autoWidth;
-
+        padding: 20px 0;
+    }
+    :global .ant-card {
+        display: inline-block;
+        margin: 0 20px;
     }
 }
