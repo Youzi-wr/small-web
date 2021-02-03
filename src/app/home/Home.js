@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Card } from 'antd';
-import service from '../service/axiosHttp';
+import service from 'src/service/axiosHttp';
 import style from './home.scss';
 
 const sty = style;
