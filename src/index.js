@@ -8,7 +8,6 @@ class Index extends React.Component {
         return <Home />;
     }
 }
-console.log()
 
 ReactDOM.render(
     <Index />,
